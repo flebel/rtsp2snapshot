@@ -27,7 +27,9 @@ def snapshot(url):
     p.wait()
     image = p.stdout.read()
     if freebsd_platform:
-        return send_from_directory(tmp_dir, tmp_filename)
+        return send_from_directory(tmp_dir,
+                                   tmp_filename,
+                                   mimetype='image/jpeg')
     return send_file(io.BytesIO(image),
                      attachment_filename='snapshot.jpg',
                      mimetype='image/jpeg')
